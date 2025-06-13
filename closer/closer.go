@@ -27,7 +27,7 @@ func (c *Closer) Add(f CloseFunc) {
 	c.fs = append(c.fs, f)
 }
 
-func (c *Closer) AddMust(f func()) {
+func (c *Closer) AddWrap(f func()) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.fs = append(c.fs, func(ctx context.Context) error {

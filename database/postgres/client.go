@@ -115,7 +115,7 @@ func (c *Client) ScanQueryRow(ctx context.Context, dst any, query string, args .
 	return pgxscan.ScanOne(dst, rows)
 }
 
-func (c *Client) Close() error {
+func (c *Client) Close(_ context.Context) error {
 	c.master.Close()
 	return nil
 }
